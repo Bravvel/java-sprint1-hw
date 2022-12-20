@@ -6,7 +6,7 @@ public class StepTracker {
         goalSteps = steps;
     }
     void newSteps(int month, int day, double steps){
-        monthToData[month][day] = steps;
+        monthToData[month-1][day-1] = steps;
     }
     void stepsPerDayToScreen(int month){
         for(int i = 0; i < 29; i++){
@@ -40,7 +40,7 @@ public class StepTracker {
         int bestSeries = 0;
         int prevBestSeries = 0;
         for(int i = 0; i < 30; i++){
-            if(monthToData[month-1][i] > goalSteps){
+            if(monthToData[month-1][i] >= goalSteps){
                 bestSeries++;
             }else{
                 if(prevBestSeries < bestSeries) {
@@ -57,8 +57,9 @@ public class StepTracker {
         System.out.println("За этот месяц вы прошли " + allStepsPerMonth(month) + " шагов");
         maxStepsInMonth(month);
         averageStepsPerMonth(month);
-        System.out.println("За этот месяц вы прошли " + converter.allDistance(month) + " метров");
-        System.out.println("За этот месяц с помощью ходьбы вы сожгли " + converter.countCalories(month) + "ккал");
+        System.out.println("За этот месяц вы прошли " + converter.allDistance(allStepsPerMonth(month)) + " метров");
+        System.out.println("За этот месяц с помощью ходьбы вы сожгли " + converter.countCalories(allStepsPerMonth(month)) + " ккал");
+        bestSeriesPerMonth(month);
     }
     public StepTracker(){
         monthToData = new double[12][30];
