@@ -9,9 +9,9 @@ public class Main {
             int command = scanner.nextInt();
             if (command == 1){
                 System.out.println("Введите месяц: ");
-                int month = scanner.nextInt();
+                int month = scanner.nextInt();//ввод месяца начинается с 1
                 System.out.println("Введите день: ");
-                int day = scanner.nextInt();
+                int day = scanner.nextInt();//ввод дня начинается с 1
                 while(true) {
                     System.out.println("Сколько шагов вы прошли в этот день?");
                     double stepsPerDay = scanner.nextDouble();
@@ -25,7 +25,7 @@ public class Main {
 
             }else if (command == 2){
                 System.out.println("За какой месяц вы бы хотели увидеть статистику ?");
-                int month = scanner.nextInt();
+                int month = scanner.nextInt(); //ввод месяца начинается с 1
                 stepTracker.printStatistics(month);
             }else if (command == 3){
                 System.out.println("Введите новое значение целевого количества шагов: ");

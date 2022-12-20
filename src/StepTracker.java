@@ -2,25 +2,25 @@ public class StepTracker {
     double[][] monthToData;
     private Converter converter;
     double goalSteps = 10000;
-    void changeGoalSteps(double steps){
+    void changeGoalSteps(double steps){ // изменение значения целевого кол-ва шагов
         goalSteps = steps;
     }
-    void newSteps(int month, int day, double steps){
+    void newSteps(int month, int day, double steps){ // добавление в массив нового значения пройденных шагов за день
         monthToData[month-1][day-1] = steps;
     }
-    void stepsPerDayToScreen(int month){
+    void stepsPerDayToScreen(int month){ // вывод кол-ва пройденных шагов за каждый день в определенном месяце
         for(int i = 0; i < 29; i++){
             System.out.print((i+1) + " день: " + monthToData[month-1][i] + ", ");
         }
         System.out.println(30 + " день: " + monthToData[month-1][29]);
     }
-     double allStepsPerMonth(int month){
+     double allStepsPerMonth(int month){ // подсчёт суммарного кол-ва пройденных шагов за месяц
         double sum = 0;
         for(int i = 0; i < 30; i++)
             sum += monthToData[month - 1][i];
         return sum;
     }
-    void maxStepsInMonth(int month){
+    void maxStepsInMonth(int month){ // нахождение максимального значения пройденных шагов за день в определённом месяце
         double maxSteps = -1;
         for(int i = 0; i < 30; i++){
             if(maxSteps < monthToData[month-1][i]){
@@ -29,7 +29,7 @@ public class StepTracker {
         }
         System.out.println("За этот месяц максимально вы прошли " + maxSteps + " шагов");
     }
-    void averageStepsPerMonth(int month){
+    void averageStepsPerMonth(int month){ // среднее кол-во пройденных шагов в день за месяц
         double sum = 0;
         for(int i = 0; i < 30; i++)
             sum += monthToData[month - 1][i];
@@ -52,7 +52,7 @@ public class StepTracker {
         if(bestSeries < prevBestSeries) bestSeries = prevBestSeries;
         System.out.println("Максимальное количество подряд идущих дней, в течение которых количество шагов за день было равно или выше целевого " + bestSeries);
     }
-    void printStatistics(int month){
+    void printStatistics(int month){ // вывод статистики
         stepsPerDayToScreen(month);
         System.out.println("За этот месяц вы прошли " + allStepsPerMonth(month) + " шагов");
         maxStepsInMonth(month);
