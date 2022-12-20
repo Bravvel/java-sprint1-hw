@@ -1,4 +1,4 @@
-public class Converter extends StepTracker {
+public class Converter{
     private StepTracker stepTracker;
     double allDistance(int month){
         double steps = stepTracker.allStepsPerMonth(month);
