@@ -3,15 +3,30 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         StepTracker stepTracker = new StepTracker();
-        Converter converter = new Converter();
         while (true){
             printMenu();
             int command = scanner.nextInt();
             if (command == 1){
                 System.out.println("Введите месяц: ");
-                int month = scanner.nextInt();//ввод месяца начинается с 1
+                int month;
+                while(true) { // проверка на корректный ввод месяца
+                    month = scanner.nextInt();//ввод месяца начинается с 1
+                    if(month < 1 || month > 12){
+                        System.out.println("Номер месяца не может быть меньше 1 и больше 12, введите корректный месяц");
+                    }else{
+                        break;
+                    }
+                }
                 System.out.println("Введите день: ");
-                int day = scanner.nextInt();//ввод дня начинается с 1
+                int day;
+                while(true) { // проверка на корректный ввод дня
+                    day = scanner.nextInt();//ввод дня начинается с 1
+                    if(day < 1 || day > 30){
+                        System.out.println("Номер дня не может быть меньше 1 и больше 30, введите корректный день");
+                    }else{
+                        break;
+                    }
+                }
                 while(true) {
                     System.out.println("Сколько шагов вы прошли в этот день?");
                     double stepsPerDay = scanner.nextDouble();

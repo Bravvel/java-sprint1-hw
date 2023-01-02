@@ -1,11 +1,9 @@
 public class Converter{
     double allDistance(double steps){ // перевод шагов в метры
-        double distance = steps * 0.75;
-        return distance;
+        return steps * 0.75 * 0.001;
     }
     double countCalories(double steps){ // перевод шагов в калории
-        double kiloCalories = steps * 0.05;
-        return kiloCalories;
+        return steps * 0.05;
     }
 
 }

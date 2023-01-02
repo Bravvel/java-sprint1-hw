@@ -2,6 +2,10 @@ public class StepTracker {
     double[][] monthToData;
     private Converter converter;
     double goalSteps = 10000;
+    public StepTracker(){
+        monthToData = new double[12][30];
+        converter = new Converter();
+    }
     void changeGoalSteps(double steps){ // изменение значения целевого кол-ва шагов
         goalSteps = steps;
     }
@@ -30,9 +34,7 @@ public class StepTracker {
         System.out.println("За этот месяц максимально вы прошли " + maxSteps + " шагов");
     }
     void averageStepsPerMonth(int month){ // среднее кол-во пройденных шагов в день за месяц
-        double sum = 0;
-        for(int i = 0; i < 30; i++)
-            sum += monthToData[month - 1][i];
+        double sum = allStepsPerMonth(month);
         double averageSteps = sum/30;
         System.out.println("В среднем в этом месяце за день вы проходили " + averageSteps + " шагов");
     }
@@ -57,13 +59,9 @@ public class StepTracker {
         System.out.println("За этот месяц вы прошли " + allStepsPerMonth(month) + " шагов");
         maxStepsInMonth(month);
         averageStepsPerMonth(month);
-        System.out.println("За этот месяц вы прошли " + converter.allDistance(allStepsPerMonth(month)) + " метров");
+        System.out.println("За этот месяц вы прошли " + converter.allDistance(allStepsPerMonth(month)) + " километров");
         System.out.println("За этот месяц с помощью ходьбы вы сожгли " + converter.countCalories(allStepsPerMonth(month)) + " ккал");
         bestSeriesPerMonth(month);
-    }
-    public StepTracker(){
-        monthToData = new double[12][30];
-        converter = new Converter();
     }
 
 }
