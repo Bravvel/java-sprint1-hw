@@ -40,7 +40,15 @@ public class Main {
 
             }else if (command == 2){
                 System.out.println("За какой месяц вы бы хотели увидеть статистику ?");
-                int month = scanner.nextInt(); //ввод месяца начинается с 1
+                int month ; //ввод месяца начинается с 1
+                while(true) { // проверка на корректный ввод месяца
+                    month = scanner.nextInt();//ввод месяца начинается с 1
+                    if(month < 1 || month > 12){
+                        System.out.println("Номер месяца не может быть меньше 1 и больше 12, введите корректный месяц");
+                    }else{
+                        break;
+                    }
+                }
                 stepTracker.printStatistics(month);
             }else if (command == 3){
                 System.out.println("Введите новое значение целевого количества шагов: ");
